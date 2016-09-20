@@ -1,5 +1,7 @@
 package com.itheima.zhbj74.fragment;
 
+import java.util.ArrayList;
+
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
@@ -17,8 +19,6 @@ import com.itheima.zhbj74.base.impl.SettingPager;
 import com.itheima.zhbj74.base.impl.SmartServicePager;
 import com.itheima.zhbj74.view.NoScrollViewPager;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-
-import java.util.ArrayList;
 
 /**
  * 主页面fragment

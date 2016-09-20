@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".GuideActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.PageIndicatorDefaults"/>
     </application>
 
 </manifest>

@@ -1,13 +1,8 @@
 package com.itheima.zhbj74.base.impl;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
-import android.graphics.Color;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -27,6 +22,8 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
+
+import java.util.ArrayList;
 
 /**
  * 新闻中心
@@ -126,7 +123,7 @@ public class NewsCenterPager extends BasePager {
 
 		// 初始化4个菜单详情页
 		mMenuDetailPagers = new ArrayList<BaseMenuDetailPager>();
-		mMenuDetailPagers.add(new NewsMenuDetailPager(mActivity));
+		mMenuDetailPagers.add(new NewsMenuDetailPager(mActivity, mNewsData.data.get(0).children));
 		mMenuDetailPagers.add(new TopicMenuDetailPager(mActivity));
 		mMenuDetailPagers.add(new PhotosMenuDetailPager(mActivity));
 		mMenuDetailPagers.add(new InteractMenuDetailPager(mActivity));
