@@ -1,5 +1,7 @@
 package com.itheima.zhbj74.base.impl;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.text.TextUtils;
 import android.view.View;
@@ -22,8 +24,6 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
-
-import java.util.ArrayList;
 
 /**
  * 新闻中心

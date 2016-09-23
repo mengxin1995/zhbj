@@ -19,7 +19,6 @@ import com.viewpagerindicator.TabPageIndicator;
 
 import java.util.ArrayList;
 
-
 /**
  * 菜单详情页-新闻
  * 

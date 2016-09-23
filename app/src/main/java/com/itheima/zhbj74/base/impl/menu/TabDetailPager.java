@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +21,8 @@ import com.itheima.zhbj74.domain.NewsTabBean.NewsData;
 import com.itheima.zhbj74.domain.NewsTabBean.TopNews;
 import com.itheima.zhbj74.global.GlobalConstants;
 import com.itheima.zhbj74.utils.CacheUtils;
+import com.itheima.zhbj74.view.PullToRefreshListView;
+import com.itheima.zhbj74.view.PullToRefreshListView.OnRefreshListener;
 import com.itheima.zhbj74.view.TopNewsViewPager;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
@@ -34,7 +35,6 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
-
 
 /**
  * 页签页面对象
@@ -57,7 +57,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
 	private TextView tvTitle;
 
 	@ViewInject(R.id.lv_list)
-	private ListView lvList;
+	private PullToRefreshListView lvList;
 
 	private String mUrl;
 
@@ -93,6 +93,16 @@ public class TabDetailPager extends BaseMenuDetailPager {
 		ViewUtils.inject(this, mHeaderView);// 此处必须将头布局也注入
 		lvList.addHeaderView(mHeaderView);
 
+		// 5. 前端界面设置回调
+		lvList.setOnRefreshListener(new OnRefreshListener() {
+
+			@Override
+			public void onRefresh() {
+				// 刷新数据
+				getDataFromServer();
+			}
+		});
+
 		return view;
 	}
 
@@ -117,6 +127,9 @@ public class TabDetailPager extends BaseMenuDetailPager {
 				processData(result);
 
 				CacheUtils.setCache(mUrl, result, mActivity);
+
+				// 收起下拉刷新控件
+				lvList.onRefreshComplete(true);
 			}
 
 			@Override
@@ -124,6 +137,9 @@ public class TabDetailPager extends BaseMenuDetailPager {
 				// 请求失败
 				error.printStackTrace();
 				Toast.makeText(mActivity, msg, Toast.LENGTH_SHORT).show();
+
+				// 收起下拉刷新控件
+				lvList.onRefreshComplete(false);
 			}
 		});
 	}
