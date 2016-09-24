@@ -24,6 +24,8 @@ public class BasePager {
 	public TextView tvTitle;
 	public ImageButton btnMenu;
 	public FrameLayout flContent;// 空的帧布局对象, 要动态添加布局
+	
+	public ImageButton btnPhoto;//组图切换按钮
 
 	public View mRootView;// 当前页面的布局对象
 
@@ -37,6 +39,7 @@ public class BasePager {
 		View view = View.inflate(mActivity, R.layout.base_pager, null);
 		tvTitle = (TextView) view.findViewById(R.id.tv_title);
 		btnMenu = (ImageButton) view.findViewById(R.id.btn_menu);
+		btnPhoto = (ImageButton) view.findViewById(R.id.btn_photo);
 		flContent = (FrameLayout) view.findViewById(R.id.fl_content);
 
 		btnMenu.setOnClickListener(new OnClickListener() {

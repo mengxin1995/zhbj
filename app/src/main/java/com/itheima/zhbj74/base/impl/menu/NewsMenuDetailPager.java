@@ -1,5 +1,7 @@
 package com.itheima.zhbj74.base.impl.menu;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -16,8 +18,6 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.viewpagerindicator.TabPageIndicator;
-
-import java.util.ArrayList;
 
 /**
  * 菜单详情页-新闻
