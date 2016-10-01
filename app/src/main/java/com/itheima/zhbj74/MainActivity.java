@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
+import android.view.WindowManager;
 
 import com.itheima.zhbj74.fragment.ContentFragment;
 import com.itheima.zhbj74.fragment.LeftMenuFragment;
@@ -28,12 +29,17 @@ public class MainActivity extends SlidingFragmentActivity {
 		// 必须在setContentView之前调用
 		setContentView(R.layout.activity_main);
 
-		// Utils.doSomthing();
+		// Utils.`();
 		// R.drawable.p_10
 		setBehindContentView(R.layout.left_menu);
 		SlidingMenu slidingMenu = getSlidingMenu();
 		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);// 全屏触摸
-		slidingMenu.setBehindOffset(200);// 屏幕预留200像素宽度
+		//slidingMenu.setBehindOffset(200);// 屏幕预留200像素宽度
+		// 200/320  * 屏幕宽度
+		WindowManager wm = getWindowManager();
+		int width = wm.getDefaultDisplay().getWidth();
+		slidingMenu.setBehindOffset(width * 200 / 320);
+
 
 		initFragment();
 	}
